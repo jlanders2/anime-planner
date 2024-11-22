@@ -9,9 +9,18 @@ export interface Page {
 export interface Media {
   id: number;
   title: Title;
+  coverImage: MediaCoverImage;
+  averageScore: number;
+  season: string;
+  seasonYear: number;
 }
 
-export interface Title {
+interface Title {
   english: string;
   romaji: string;
+}
+
+interface MediaCoverImage {
+  medium: string;
+  large: string;
 }
