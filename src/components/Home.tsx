@@ -25,26 +25,25 @@ function Home() {
   };
 
   return (
-    <div className="d-flex justify-content-center">
-      <form onSubmit={handleAnimeSearchFormSubmission}>
-        <label htmlFor="search">Anime Search</label>
-        <input
-          type="text"
-          className="form-control"
-          name="search"
-          value={animeSearchValue}
-          onChange={handleAnimeSearchInputChange}
-        />
-
-        <button className="btn btn-primary" type="submit">
-          Search
-        </button>
+    <div className="d-flex flex-column align-items-center justify-content-center m-2">
+      <form onSubmit={handleAnimeSearchFormSubmission} className="w-50">
+        <div className="input-group">
+          <input
+            type="text"
+            className="form-control"
+            name="search"
+            placeholder="Anime"
+            value={animeSearchValue}
+            onChange={handleAnimeSearchInputChange}
+          />
+          <button className="btn btn-outline-secondary">Search</button>
+        </div>
       </form>
-
-      <table>
+      <table className="table table-hover">
         <thead>
           <tr>
             <th>Id</th>
+            <th>Title</th>
           </tr>
         </thead>
         <tbody>
@@ -52,6 +51,7 @@ function Home() {
             return (
               <tr key={id}>
                 <td>{anime.id}</td>
+                <td>{anime.title}</td>
               </tr>
             );
           })}
