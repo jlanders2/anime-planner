@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Anime } from "../models/anime";
 import * as anilistApi from "../anilist/api";
 
@@ -8,12 +8,12 @@ export default function TrendingAnime() {
   const updateAnimeList = async () => {
     const results = await anilistApi.trendingAnimeTopFive();
     setAnimeList(results);
-    console.log("ran");
   };
 
-  updateAnimeList();
-
-  setInterval(updateAnimeList, 60 * 60 * 1000);
+  useEffect(() => {
+    updateAnimeList();
+    setInterval(updateAnimeList, 60 * 60 * 1000);
+  }, []);
 
   return (
     <div>
