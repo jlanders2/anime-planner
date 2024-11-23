@@ -8,12 +8,12 @@ export interface Page {
 
 export interface Media {
   id: number;
-  title: Title;
-  coverImage: MediaCoverImage;
   averageScore: number;
   season: string;
   seasonYear: number;
   description: string;
+  title: Title;
+  coverImage: MediaCoverImage;
 }
 
 interface Title {
