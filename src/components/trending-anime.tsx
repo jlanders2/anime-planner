@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Anime } from "../models/anime";
 import * as anilistApi from "../anilist/api";
+import parse from "html-react-parser";
 
 export default function TrendingAnime() {
   const [animeList, setAnimeList] = useState(new Array<Anime>());
@@ -17,11 +18,28 @@ export default function TrendingAnime() {
 
   return (
     <div>
-      <ul>
-        {animeList.map((anime, id) => {
-          return <li key={id}>{anime.title}</li>;
-        })}
-      </ul>
+      <table className="table table-striped table-borderless">
+        <thead></thead>
+        <tbody>
+          {animeList.map((anime, id) => {
+            return (
+              <tr key={id}>
+                <td>
+                  <img src={anime.mediumArtworkUrl} />
+                </td>
+                <td>
+                  <div>{anime.title}</div>
+                  <div>{anime.averageScore}</div>
+                  <div>{parse(anime.description ? anime.description : "")}</div>
+                </td>
+                <td>
+                  {anime.season} - {anime.seasonYear}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 }

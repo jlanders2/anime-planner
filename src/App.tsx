@@ -6,7 +6,7 @@ import { useState } from "react";
 import Home from "./views/home";
 
 function App() {
-  const [view, setView] = useState("home");
+  const [view] = useState("home");
   return (
     <div>
       {(() => {

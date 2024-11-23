@@ -8,6 +8,7 @@ export class Anime {
   averageScore: number | undefined;
   season: string | undefined;
   seasonYear: number | undefined;
+  description: string | undefined;
 
   constructor(media?: Media) {
     if (media) {
@@ -18,6 +19,7 @@ export class Anime {
       this.averageScore = media.averageScore;
       this.season = media.season;
       this.seasonYear = media.seasonYear;
+      this.description = media.description;
     }
   }
 }

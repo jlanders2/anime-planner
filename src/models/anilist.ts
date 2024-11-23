@@ -13,6 +13,7 @@ export interface Media {
   averageScore: number;
   season: string;
   seasonYear: number;
+  description: string;
 }
 
 interface Title {

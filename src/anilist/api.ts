@@ -26,6 +26,7 @@ export async function animeSearch(
           averageScore
           season
           seasonYear
+          description(asHtml: false)
         }
       }
     }
@@ -62,6 +63,7 @@ export async function trendingAnimeTopFive() {
           averageScore
           season
           seasonYear
+          description(asHtml: false)
         }
       }
     }

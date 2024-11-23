@@ -6,8 +6,8 @@ import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 export default function AnimeSearch() {
   const [animeSearchValue, setAnimeSearchValue] = useState("");
-  const [animeSearchResultsPage, setAnimeSearchResultsPage] = useState(1);
-  const [animeSearchResultsPerPage, SetAnimeSearchResultsPerPage] =
+  const [animeSearchResultsPage] = useState(1);
+  const [animeSearchResultsPerPage, setAnimeSearchResultsPerPage] =
     useState(10);
   const [animeSearchResults, SetAnimeSearchResults] = useState(
     new Array<Anime>()
@@ -24,7 +24,7 @@ export default function AnimeSearch() {
   const handlePerPageSelectChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    SetAnimeSearchResultsPerPage(Number(event.target.value));
+    setAnimeSearchResultsPerPage(Number(event.target.value));
   };
 
   const handleAnimeSearchFormSubmission = async (
