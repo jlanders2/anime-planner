@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "OLD/anime-search.tsx", "OLD/trending-anime.tsx", "OLD/nav.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
