@@ -1,4 +1,4 @@
-import { Media } from "./anilist";
+import { Media } from "../anilist/models";
 
 export class Anime {
   id: number | undefined;
