@@ -5,6 +5,22 @@ export interface IAnilistQuery {
   variables: object;
 }
 
+const mediaQueryBody = `{
+    id
+    title {
+        english
+        romaji
+    }
+    coverImage {
+        large
+        medium
+    }
+    averageScore
+    season
+    seasonYear
+    description(asHtml: false)
+}`;
+
 export const animeSearchQuery = (
   anime: string,
   page?: number,
@@ -14,21 +30,7 @@ export const animeSearchQuery = (
     document: gql`
       query ($page: Int, $perPage: Int, $search: String) {
         Page(page: $page, perPage: $perPage) {
-          media(type: ANIME, sort: START_DATE, search: $search) {
-            id
-            title {
-              english
-              romaji
-            }
-            coverImage {
-              large
-              medium
-            }
-            averageScore
-            season
-            seasonYear
-            description(asHtml: false)
-          }
+          media(type: ANIME, sort: START_DATE, search: $search) ${mediaQueryBody}
         }
       }
     `,
@@ -45,21 +47,7 @@ export const trendingTopFiveAnimeQuery = (): IAnilistQuery => {
     document: gql`
       query {
         Page(page: 1, perPage: 5) {
-          media(type: ANIME, sort: [TRENDING_DESC, POPULARITY_DESC]) {
-            id
-            title {
-              english
-              romaji
-            }
-            coverImage {
-              large
-              medium
-            }
-            averageScore
-            season
-            seasonYear
-            description(asHtml: false)
-          }
+          media(type: ANIME, sort: [TRENDING_DESC, POPULARITY_DESC]) ${mediaQueryBody}
         }
       }
     `,
