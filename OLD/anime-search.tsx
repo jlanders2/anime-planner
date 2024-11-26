@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Anime } from "../src/shared/anilist/models/anime";
 import * as anilistApi from "../src/shared/anilist/api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { Anime } from "../src/shared/models/anime";
 
 export default function AnimeSearch() {
   const [animeSearchValue, setAnimeSearchValue] = useState("");
