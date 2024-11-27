@@ -34,3 +34,9 @@ export async function trendingAnimeTopFive() {
 
   return animeList;
 }
+
+export async function userAnimeList(userRef: string) {
+  const query = userAnimeListQuery(userRef);
+
+  // let results = await client.request<
+}

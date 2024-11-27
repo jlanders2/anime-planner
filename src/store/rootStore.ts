@@ -1,14 +1,9 @@
-import { action, observable, set } from "mobx";
-import Auth, { IAuth } from "./models/auth";
+import { AuthStore } from "./authStore";
 
 export class RootStore {
-  @observable auth = Auth;
-  constructor() {}
+  authStore: AuthStore;
 
-  @action("ApplicationStore | setAuth")
-  setAuth = (state: IAuth): IAuth => {
-    set(this.auth, state);
-    console.log(this.auth);
-    return this.auth;
-  };
+  constructor() {
+    this.authStore = new AuthStore(this);
+  }
 }

@@ -1,10 +1,14 @@
+import { observer } from "mobx-react-lite";
 import { useState } from "react";
 import useStores from "../../hooks/useStores";
-import { observer } from "mobx-react-lite";
+import { IAnilistJwtToken } from "./models/token";
+import { jwtDecode } from "jwt-decode";
 
 const Authentication = observer((): JSX.Element => {
   const {
-    rootStore: { setAuth },
+    rootStore: {
+      authStore: { setAuth },
+    },
   } = useStores();
 
   const [authToken, setAuthToken] = useState("");
@@ -16,11 +20,13 @@ const Authentication = observer((): JSX.Element => {
   };
 
   const handleAuthenticate = () => {
-    // Perform a test call to verify token is valid
-    const success = true;
-    if (success) {
-      setAuth({ isAuthenticated: true, token: authToken });
-    }
+    const decodedJwt: IAnilistJwtToken = jwtDecode(authToken);
+    setAuth({
+      token: authToken,
+      client: decodedJwt.aud,
+      expirationDate: new Date(0).setUTCSeconds(decodedJwt.exp),
+      anilistUserRef: decodedJwt.sub,
+    });
   };
 
   return (

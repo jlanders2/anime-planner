@@ -1,13 +1,17 @@
 import { observable } from "mobx";
 
 export interface IAuth {
-  isAuthenticated: boolean;
   token: string;
+  client: string;
+  expirationDate: Date;
+  anilistUserRef: string;
 }
 
 const Auth: IAuth = observable({
-  isAuthenticated: false,
   token: "",
+  client: "",
+  expirationDate: new Date(0),
+  anilistUserRef: ""
 });
 
 export default Auth;
